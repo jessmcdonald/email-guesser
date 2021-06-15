@@ -12,10 +12,10 @@ class Result extends Component {
   render() {
     return (
       <div>
-        <h2 class="result-header">
+        <h2 className="result-header">
           I guessss their email is:
         </h2>
-        <h2 class="result">
+        <h2 className="result">
           {this.state.emailAddress}
         </h2>
       </div>

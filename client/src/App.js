@@ -14,27 +14,21 @@ class App extends Component {
       const response = res.data;
       this.setState({response});
     });
-
   }
 
   render() {
-    let haveResult = this.state.emailAddress;
-    const renderResultOrPrompt = () => {
-      if (haveResult) {
-        return <Result/>
-      } else {
-        return <div>NO result yet :(</div>
-      }
-    }
-
-
     return (
       <div className="App">
         {/* <h1>{this.state.response.body}</h1> */}
-        <div class="container">
+        <div className="container">
           <h1>Email guessser!</h1>
           <Form/>
-          {renderResultOrPrompt()}
+
+          {this.state.emailAddress ? (
+            <Result />
+          ) : (
+            <div> No result yet :(</div>
+          )}
         </div>
       </div>
     );
