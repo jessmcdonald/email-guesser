@@ -1,0 +1,27 @@
+@import "../src/assets/styles/colors";
+
+.App {
+  text-align: center;
+  background: url(./assets/img/funky.jpg);
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: -0.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    width: 100%;
+    height: 10%;
+  }
+
+  .container {
+    width: 50%;
+    border-radius: 15px;
+    background: $white;
+    box-shadow: 0 0 50px rgba(40,75,124,0.08);
+  }
+
+}
