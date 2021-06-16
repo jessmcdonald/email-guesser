@@ -1,0 +1,26 @@
+[
+    {
+        "FullName" : "Jane Doe",
+        "Email": "jdoe@babbel.com"
+    },
+    {
+        "FullName" : "Jay Arun",
+        "Email" : "jayarun@linkedin.com"
+    },
+    {
+        "FullName" : "David Stein",
+        "Email" : "davidstein@google.com"
+    },
+    {
+        "FullName" : "Mat Lee",
+        "Email" : "matlee@google.com"
+    },
+    {
+        "FullName" : "Marta Dahl",
+        "Email": "mdahl@babbel.com"
+    },
+    {
+        "FullName" : "Vanessa Boom",
+        "Email" : "vboom@babbel.com"
+    }
+]
