@@ -27,6 +27,11 @@
     border-top: none;
     border-left: none;
     border-right: none;
+    transition: 0.3s;
+
+    &:hover {
+      border-bottom: 3px solid $pink;
+    }
   }
 
   .submit-button {

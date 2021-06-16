@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './Result.scss';
 
 class Result extends Component {
-  state = {
-    emailAddress: 'pickles@guess.com'
-  };
   
   componentDidMount() {
   }
@@ -16,7 +13,7 @@ class Result extends Component {
           I guessss their email is:
         </h2>
         <h2 className="result">
-          {this.state.emailAddress}
+          {this.props.emailAddress}
         </h2>
       </div>
 

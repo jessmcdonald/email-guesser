@@ -5,9 +5,18 @@ import Form from './components/Form/Form';
 import Result from './components/Result/Result';
 
 class App extends Component {
-  state = {
-    emailAddress: true
-  };
+  constructor(props) {
+    super(props);
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state = {
+      fullName : '',
+      domain : '',
+      emailAddress : 'howdy@dogs.com'
+    };
+  }
   
   componentDidMount() {
     axios.get('/api/v1/ahoy-there').then((res) => {
@@ -16,16 +25,52 @@ class App extends Component {
     });
   }
 
+  onChange = (event) => {
+    this.setState({
+        [event.target.name]: event.target.value
+      });
+  }
+
+  onSubmit = () => {
+    //replace with api call
+    console.log("you are submitting" + this.state.fullName + this.state.domain);
+
+    this.setState({
+      fullName : '',
+      domain : ''
+    });
+  }
+
+  getEmail = () => {
+    axios
+      .get('/api/v1/ahoy-there')
+      .then((res) => {
+        const response = res.data;
+        this.setState({ emailAddress : response});
+      })
+      .catch(error => {
+        this.setState({ error : error.message });
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="App">
         {/* <h1>{this.state.response.body}</h1> */}
         <div className="container">
           <h1>Email guessser!</h1>
-          <Form/>
+          <Form
+            fullName={this.state.fullName}
+            domain={this.state.domain}
+            onChange={this.onChange}
+            onSubmit={this.onSubmit}
+          />
 
           {this.state.emailAddress ? (
-            <Result />
+            <Result
+              emailAddress={this.state.emailAddress}
+            />
           ) : (
             <div> No result yet :(</div>
           )}
