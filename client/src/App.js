@@ -14,7 +14,8 @@ class App extends Component {
     this.state = {
       fullName : '',
       domain : '',
-      emailAddress : 'howdy@dogs.com'
+      emailAddress : 'howdy@dogs.com',
+      response: ''
     };
   }
   
@@ -34,24 +35,21 @@ class App extends Component {
   onSubmit = () => {
     //replace with api call
     console.log("you are submitting" + this.state.fullName + this.state.domain);
-
-    this.setState({
-      fullName : '',
-      domain : ''
+    axios.post('/api/v1/ahoy-there', {
+      FullName: this.state.fullName,
+      Domain: this.state.domain
+    })
+    .then((res) => {
+      const response = res.data;
+      this.setState({
+        fullName : '',
+        domain : '',
+        emailAddress : response.body});
+    })
+    .catch(error => {
+      this.setState({ error : error.message });
+      console.log(error);
     });
-  }
-
-  getEmail = () => {
-    axios
-      .get('/api/v1/ahoy-there')
-      .then((res) => {
-        const response = res.data;
-        this.setState({ emailAddress : response});
-      })
-      .catch(error => {
-        this.setState({ error : error.message });
-        console.log(error);
-      });
   }
 
   render() {
