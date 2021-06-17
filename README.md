@@ -2,7 +2,7 @@ This app guesses an email address based on the full name and email domain, it us
 
 The live app is deployed here: https://email-guesser.herokuapp.com/
 
-[Imgur](https://imgur.com/nSdCjOp)
+<img src="https://i.imgur.com/nSdCjOp.png" width=400>
 
 - To run the project locally:
 git clone https://github.com/jessmcdonald/email-guesser.git
