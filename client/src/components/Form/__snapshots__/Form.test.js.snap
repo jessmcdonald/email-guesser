@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<form
+  className="input-form"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="fname"
+  >
+    Full name:
+  </label>
+  <input
+    id="name"
+    name="fullName"
+    onChange={[Function]}
+    placeholder="Jeff Mangum"
+    type="text"
+  />
+  <div
+    className="fullname_error"
+  >
+    
+  </div>
+  <label
+    htmlFor="lname"
+  >
+    Domain:
+  </label>
+  <input
+    id="domain"
+    name="domain"
+    onChange={[Function]}
+    placeholder="@babbel.com"
+    type="text"
+  />
+  <div
+    className="domain_error"
+  >
+    
+  </div>
+  <input
+    className="submit-button"
+    type="submit"
+    value="Submit"
+  />
+  <div
+    className="fullname_error"
+  >
+    
+  </div>
+</form>
+`;
