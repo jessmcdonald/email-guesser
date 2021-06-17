@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       fullName : '',
       domain : '',
-      emailAddress : 'howdy@dogs.com',
+      emailAddress : '',
       response: ''
     };
   }
@@ -32,12 +32,18 @@ class App extends Component {
       });
   }
 
+  addAtIfMissing = (domain) => {
+    if (domain.charAt(0) === '@') {
+      return domain;
+    } else {
+      return '@' + domain;
+    }
+  }
+
   onSubmit = () => {
-    //replace with api call
-    console.log("you are submitting" + this.state.fullName + this.state.domain);
     axios.post('/api/v1/ahoy-there', {
-      FullName: this.state.fullName,
-      Domain: this.state.domain
+      FullName: this.state.fullName.toLowerCase(),
+      Domain: this.addAtIfMissing(this.state.domain.toLowerCase())
     })
     .then((res) => {
       const response = res.data;
