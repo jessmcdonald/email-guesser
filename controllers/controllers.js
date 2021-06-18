@@ -1,8 +1,8 @@
 const sampleData = require ("../sampleData.json");
-const EMAIL_FORMAT = require ("../emailFormatEnums");
+const EMAIL_FORMAT = require ("../enums/emailFormatEnums");
 
 
-function ahoyThere(req, res){
+function getEmail(req, res){
 
     if (checkReferenceEmailFormat(req.body.Domain)){
         let format = checkReferenceEmailFormat(req.body.Domain);
@@ -21,7 +21,7 @@ function ahoyThere(req, res){
     }
 };
 
-module.exports.ahoyThere = ahoyThere;
+module.exports.getEmail = getEmail;
 
 /**
  * Checks if we have en email from the requested domain to use as a reference,

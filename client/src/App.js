@@ -15,17 +15,9 @@ class App extends Component {
       fullName : '',
       domain : '',
       emailAddress : '',
-      response: ''
     };
   }
   
-  componentDidMount() {
-    axios.get('/api/v1/ahoy-there').then((res) => {
-      const response = res.data;
-      this.setState({response});
-    });
-  }
-
   onChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
@@ -41,7 +33,7 @@ class App extends Component {
   }
 
   onSubmit = () => {
-    axios.post('/api/v1/ahoy-there', {
+    axios.post('/api/v1/get-email', {
       FullName: this.state.fullName.toLowerCase(),
       Domain: this.addAtIfMissing(this.state.domain.toLowerCase())
     })
@@ -76,7 +68,7 @@ class App extends Component {
               emailAddress={this.state.emailAddress}
             />
           ) : (
-            <div> No result yet :(</div>
+            <div></div>
           )}
         </div>
       </div>

@@ -29,7 +29,7 @@
     border-right: none;
     transition: 0.3s;
 
-    &:hover {
+    &:hover:not(.submit-button) {
       border-bottom: 3px solid $pink;
     }
   }
@@ -38,7 +38,7 @@
     background: $lemon;
     color: $black;
     border-radius: 5px;
-    border: none;
+    border: 3px solid $black;
     height: 3rem;
     margin-top: 2rem;
     font-size: 1.8rem;
@@ -48,7 +48,6 @@
     &:hover {
       background: $lilac;
       cursor: pointer;
-      border: 3px solid $black;
     }
   }
 }
