@@ -1,16 +1,18 @@
 @import "../../assets/styles/colors.scss";
+@import "../../assets/styles/screen-sizes.scss";
 
-.result-header {
-  color: $black;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  width: 100%;
-  margin-top: 2rem;
+.result-container {
+  height: 2.5rem;
 }
 
 .result {
   color: $black;
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
+  font-size: 1.4rem;
   width: 100%;
+  margin: 0;
+
+  @media (max-width: $desktop-min) {
+    margin: -1rem 0;
+  }
 }

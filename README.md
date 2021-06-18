@@ -7,7 +7,7 @@ The live app is deployed here: https://email-guesser.herokuapp.com/
 - To run the project locally:
   - git clone https://github.com/jessmcdonald/email-guesser.git
   - cd email-guesser
-  -npm run dev
+  - npm run dev
 
 - To build the whole project ready for deployment:
-  -npm run client:build
+  - npm run client:build

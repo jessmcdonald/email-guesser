@@ -8,13 +8,16 @@ class Result extends Component {
 
   render() {
     return (
-      <div>
-        <h2 className="result-header">
-          I guessss their email is:
-        </h2>
-        <h2 className="result">
-          {this.props.emailAddress}
-        </h2>
+      <div className="result-container">
+        {this.props.unsuccessfulResponse ? (
+          <h2 className="result">
+            {this.props.emailAddress}
+          </h2> ) : (
+            <h2 className="result">
+            I guess their email is: {this.props.emailAddress}
+          </h2>
+          )
+        }
       </div>
 
     );

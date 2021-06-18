@@ -23,6 +23,14 @@
     border: 4px solid $black;
     background: $white;
     width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: $desktop-min) {
+      padding: 0.5rem
+    }
 
     @media (min-width: $tablet-min) {
       width: 60%;
@@ -31,5 +39,10 @@
     @media (min-width: $desktop-min) {
       width: 40%;
     }
+  }
+
+  .footer {
+    width: 100%;
+    height: 2.5rem;
   }
 }

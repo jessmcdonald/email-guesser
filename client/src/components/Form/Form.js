@@ -15,7 +15,7 @@ class Form extends Component {
   handleChange = async (event) => {
     await this.props.onChange(event);
     this.setState({submitError: ''});
-    
+
     switch(event.target.name) {
       case 'fullName' :
         this.validateFullname();
@@ -34,7 +34,7 @@ class Form extends Component {
       this.props.onSubmit();
     } else {
       this.setState({
-        submitError: 'please check your entries'
+        submitError: 'Please check your entries'
       })
     }
   }
@@ -44,7 +44,7 @@ class Form extends Component {
     let fullName = this.props.fullName;
     if(!regFullName.test(fullName)) {
       this.setState({
-        fullNameError : 'Please enter a full name (first name and last name separted by a space.)'
+        fullNameError : 'Please enter a full name (first name and last name separated by a space)'
       })
     } else {
       this.setState({
@@ -76,7 +76,7 @@ class Form extends Component {
           value={this.props.fullName}
           onChange={this.handleChange}>
         </input>
-        <div className="fullname_error">
+        <div className="fullname-error">
         {this.state.fullNameError ? (
             this.state.fullNameError
           ) : ('')}
@@ -87,7 +87,7 @@ class Form extends Component {
           value={this.props.domain}
           onChange={this.handleChange}>
         </input>
-        <div className="domain_error">
+        <div className="domain-error">
         {this.state.domainError ? (
             this.state.domainError
           ) : ('')}
@@ -95,7 +95,7 @@ class Form extends Component {
 
         <input type="submit" className="submit-button" value="Submit"></input>
 
-        <div className="fullname_error">
+        <div className="submit-error">
         {this.state.submitError ? (
             this.state.submitError
           ) : ('') }

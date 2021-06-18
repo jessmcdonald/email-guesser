@@ -15,6 +15,7 @@ class App extends Component {
       fullName : '',
       domain : '',
       emailAddress : '',
+      unsuccessfulResponse : '',
     };
   }
   
@@ -43,6 +44,11 @@ class App extends Component {
         fullName : '',
         domain : '',
         emailAddress : response.body});
+        if(response.body === "Sorry we can't guess the email format for that domain :(") {
+          this.setState({
+            unsuccessfulResponse : true
+          });
+        }
     })
     .catch(error => {
       this.setState({ error : error.message });
@@ -63,13 +69,14 @@ class App extends Component {
             onSubmit={this.onSubmit}
           />
 
+          <div className="footer">
           {this.state.emailAddress ? (
             <Result
               emailAddress={this.state.emailAddress}
+              unsuccessfulResponse={this.state.unsuccessfulResponse}
             />
-          ) : (
-            <div></div>
-          )}
+          ) : ('')}
+          </div>
         </div>
       </div>
     );
