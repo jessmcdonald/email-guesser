@@ -48,6 +48,9 @@ app.get('*', (req, res) => {
 });
 
 // Configure our server to listen on the port defiend by our port variable
-app.listen(port, () => console.log(`BACK_END_SERVICE_PORT: ${port}`));
+if(!module.parent){
+    app.listen(port, () => console.log(`BACK_END_SERVICE_PORT: ${port}`));
+}
+
 
 module.exports = app;

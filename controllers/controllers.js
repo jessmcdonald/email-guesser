@@ -4,9 +4,35 @@ const EMAIL_FORMAT = require ("../enums/emailFormatEnums");
 
 function getEmail(req, res){
 
+    let responseData = null;
+
+    // missing param
+    if (!req.body.Domain || !req.body.FullName) {
+        responseData = "Missing param in request";
+        return res.status(400).json({
+            message: responseData
+        }).send();
+    }
+
+    // wrongly formatted fullname
+    if (!validateFullName(req.body.FullName)) {
+        responseData = "FullName param has wrong format";
+        return res.status(400).json({
+            message: responseData
+        }).send();
+    }
+
+    // wrongly formatted domain
+    if (!validateDomain(req.body.Domain)) {
+        responseData = "Domain param has wrong format";
+        return res.status(400).json({
+            message: responseData
+        }).send();
+    }
+
+    // 
     if (checkReferenceEmailFormat(req.body.Domain)){
         let format = checkReferenceEmailFormat(req.body.Domain);
-
         let responseData = buildGuessedEmailAddress(req.body.FullName, req.body.Domain, format);
 
         res.status(200).json({
@@ -22,6 +48,23 @@ function getEmail(req, res){
 };
 
 module.exports.getEmail = getEmail;
+
+function validateDomain(domain) {
+    if (domain.includes('.')){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function validateFullName(fullName) {
+    let regFullName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    if(regFullName.test(fullName)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /**
  * Checks if we have en email from the requested domain to use as a reference,
@@ -40,7 +83,6 @@ function checkReferenceEmailFormat(domain) {
     }
     return referenceEmailFormat;
 }
-
 
 /**
  * Determine if the email format is firstName+lastName@domain.com or firstInitial+LastName@domain.com
