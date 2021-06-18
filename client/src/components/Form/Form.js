@@ -14,6 +14,8 @@ class Form extends Component {
   }
   handleChange = async (event) => {
     await this.props.onChange(event);
+    this.setState({submitError: ''});
+    
     switch(event.target.name) {
       case 'fullName' :
         this.validateFullname();
@@ -42,7 +44,7 @@ class Form extends Component {
     let fullName = this.props.fullName;
     if(!regFullName.test(fullName)) {
       this.setState({
-        fullNameError : 'Please enter a full name (first name and last name separted by a space.'
+        fullNameError : 'Please enter a full name (first name and last name separted by a space.)'
       })
     } else {
       this.setState({
