@@ -4,6 +4,13 @@ import axios from 'axios'
 import Form from './components/Form/Form';
 import Result from './components/Result/Result';
 
+// TODO tried nock test in App.test.js
+// axios.defaults.baseURL = 'https://jessss.com';
+
+// axios.interceptors.request.use(request => {
+//   console.log('Starting Request', JSON.stringify(request, null, 2));
+//   return request});
+
 class App extends Component {
   constructor(props) {
     super(props);

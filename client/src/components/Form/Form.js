@@ -71,25 +71,25 @@ class Form extends Component {
     return (
       <form className="input-form" onSubmit={this.handleSubmit}>
 
-        <label htmlFor="fname">Full name:</label>
-        <input type="text" id="name" name="fullName" placeholder="Jeff Mangum"
+        <label htmlFor="fullName">Full name:</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Jeff Mangum"
           value={this.props.fullName}
           onChange={this.handleChange}>
         </input>
         <div className="fullname-error">
         {this.state.fullNameError ? (
-            this.state.fullNameError
+            <div role="alert">{this.state.fullNameError}</div>
           ) : ('')}
         </div>
 
-        <label htmlFor="lname">Domain:</label>
+        <label htmlFor="domain">Domain:</label>
         <input type="text" id="domain" name="domain" placeholder="@babbel.com"
           value={this.props.domain}
           onChange={this.handleChange}>
         </input>
         <div className="domain-error">
         {this.state.domainError ? (
-            this.state.domainError
+            <div role="alert">{this.state.domainError}</div>
           ) : ('')}
         </div>
 

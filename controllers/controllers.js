@@ -110,6 +110,13 @@ function identifyEmailFormat(emailAddress, fullName) {
  */
 function buildGuessedEmailAddress(fullName, domain, format) {
     let guessedEmailString = null;
+    let fullDomain = '';
+
+    if (domain.charAt(0) == '@'){
+        fullDomain = domain;
+    } else {
+        fullDomain = '@' + domain;
+    }
 
     switch (format) {
         case EMAIL_FORMAT.FULL_NAME:
@@ -119,5 +126,5 @@ function buildGuessedEmailAddress(fullName, domain, format) {
             guessedEmailString = fullName.charAt(0) + fullName.substring(fullName.indexOf(' ') + 1).toLowerCase();
             break;
     }
-    return guessedEmailString + domain;
+    return guessedEmailString + fullDomain;
 }

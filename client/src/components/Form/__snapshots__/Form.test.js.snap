@@ -1,29 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`FormComponent renders correctly 1`] = `
 <form
   className="input-form"
   onSubmit={[Function]}
 >
   <label
-    htmlFor="fname"
+    htmlFor="fullName"
   >
     Full name:
   </label>
   <input
-    id="name"
+    id="fullName"
     name="fullName"
     onChange={[Function]}
     placeholder="Jeff Mangum"
     type="text"
   />
   <div
-    className="fullname_error"
+    className="fullname-error"
   >
     
   </div>
   <label
-    htmlFor="lname"
+    htmlFor="domain"
   >
     Domain:
   </label>
@@ -35,7 +35,7 @@ exports[` 1`] = `
     type="text"
   />
   <div
-    className="domain_error"
+    className="domain-error"
   >
     
   </div>
@@ -45,7 +45,7 @@ exports[` 1`] = `
     value="Submit"
   />
   <div
-    className="fullname_error"
+    className="submit-error"
   >
     
   </div>
