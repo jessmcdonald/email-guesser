@@ -41,29 +41,19 @@ function getEmail(req, res){
     } else {
         let responseData = "Sorry we can't guess the email format for that domain :("
 
-        res.status(200).json({
-            body: responseData
+        res.status(400).json({
+            message: responseData
         });
     }
 };
 
 module.exports.getEmail = getEmail;
 
-function validateDomain(domain) {
-    if (domain.includes('.')){
-        return true;
-    } else {
-        return false;
-    }
-}
+const validateDomain = (domain) => domain.includes('.');
 
-function validateFullName(fullName) {
+const validateFullName = (fullName) => {
     let regFullName = /^[a-zA-Z]+ [a-zA-Z]+$/;
-    if(regFullName.test(fullName)) {
-        return true;
-    } else {
-        return false;
-    }
+    return !!regFullName.test(fullName);
 }
 
 /**
@@ -73,15 +63,11 @@ function validateFullName(fullName) {
  * @returns {string | null} referenceEmail
  */
 function checkReferenceEmailFormat(domain) {
-    let referenceEmailFormat = null
-
-    for(let i = 0; i < sampleData.length; i++){
-        if(sampleData[i].Email.includes(domain)){
-            referenceEmailFormat = identifyEmailFormat(sampleData[i].Email, sampleData[i].FullName);
-            break
-        }
+    const found = sampleData.find(element => element.Email.includes(domain))
+    if(!found){
+        return
     }
-    return referenceEmailFormat;
+    return identifyEmailFormat(found.Email, found.FullName);
 }
 
 /**
@@ -90,7 +76,7 @@ function checkReferenceEmailFormat(domain) {
  * @param {string} fullName 
  * @returns {string} email format
  */
-function identifyEmailFormat(emailAddress, fullName) {
+const identifyEmailFormat = (emailAddress, fullName) => {
     let emailString = emailAddress.substring(0, emailAddress.indexOf('@'));
     let fullNameString = fullName.replace(' ', '').toLowerCase();
     let initialLastNameString = fullName.charAt(0) + fullName.substring(fullName.indexOf(' ') + 1).toLowerCase();
@@ -108,10 +94,11 @@ function identifyEmailFormat(emailAddress, fullName) {
  * @param {string} format 
  * @returns {string} guessed email address
  */
-function buildGuessedEmailAddress(fullName, domain, format) {
+const buildGuessedEmailAddress = (fullName, domain, format) => {
     let guessedEmailString = null;
     let fullDomain = '';
 
+    // TODO extract function
     if (domain.charAt(0) == '@'){
         fullDomain = domain;
     } else {

@@ -9,6 +9,8 @@ describe('GuessEmail', () => {
 
     describe('/get email address', () => {
 
+      // TODO extract repeated functionality ?
+
         // test success if ref email in db
         it('it should return 200 and an email address string', (done) => {
           chai.request(server)
@@ -24,16 +26,16 @@ describe('GuessEmail', () => {
         });
 
         // test success if we have no ref email in db
-        it('it should return 200 and a sorry message', (done) => {
+        it('it should return 400 and a sorry message', (done) => {
           chai.request(server)
               .post('api/v1/get-email')
               .set('content-type', 'application/json')
               .send({FullName: 'michael scott'})
               .send({Domain: '@dundermifflin.com'})
               .end((res) => {
-                  res.should.have.status(200);
-                  res.body.should.be.a('string');
-                  res.body.should.equal("Sorry we can't guess the email format for that domain :(");
+                  res.should.have.status(400);
+                  res.message.should.be.a('string');
+                  res.message.should.equal("Sorry we can't guess the email format for that domain :(");
                   done();
               });
         });

@@ -51,6 +51,7 @@ class App extends Component {
         fullName : '',
         domain : '',
         emailAddress : response.body});
+        // TODO check for response code instead of text
         if(response.body === "Sorry we can't guess the email format for that domain :(") {
           this.setState({
             unsuccessfulResponse : true
