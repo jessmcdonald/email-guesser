@@ -77,9 +77,9 @@ class Form extends Component {
           onChange={this.handleChange}>
         </input>
         <div className="fullname-error">
-        {this.state.fullNameError ? (
+        {!!this.state.fullNameError && 
             <div role="alert">{this.state.fullNameError}</div>
-          ) : ('')}
+        }
         </div>
 
         <label htmlFor="domain">Domain:</label>
@@ -88,17 +88,17 @@ class Form extends Component {
           onChange={this.handleChange}>
         </input>
         <div className="domain-error">
-        {this.state.domainError ? (
+        {!!this.state.domainError &&
             <div role="alert">{this.state.domainError}</div>
-          ) : ('')}
+        }
         </div>
 
         <input type="submit" className="submit-button" value="Submit"></input>
 
         <div className="submit-error">
-        {this.state.submitError ? (
+        {!!this.state.submitError && 
             this.state.submitError
-          ) : ('') }
+        }
         </div>
 
       </form>
