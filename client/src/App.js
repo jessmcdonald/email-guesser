@@ -63,7 +63,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <h1>{this.state.response.body}</h1> */}
         <div className="container">
           <h1>Email guessser!</h1>
           <Form
