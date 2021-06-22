@@ -47,20 +47,16 @@ class App extends Component {
     })
     .then((res) => {
       const response = res.data;
+      console.log(res.status);
       this.setState({
         fullName : '',
         domain : '',
-        emailAddress : response.body});
-        // TODO check for response code instead of text
-        if(response.body === "Sorry we can't guess the email format for that domain :(") {
-          this.setState({
-            unsuccessfulResponse : true
-          });
-        }
+        emailAddress : response.body,
+        unsuccessfulResponse : ''});
     })
     .catch(error => {
-      this.setState({ error : error.message });
-      console.log(error);
+      this.setState({ unsuccessfulResponse : "Please check you have entered a full name and domain" });
+      console.log(error.message);
     });
   }
 
@@ -78,12 +74,10 @@ class App extends Component {
           />
 
           <div className="footer">
-          {this.state.emailAddress ? (
             <Result
               emailAddress={this.state.emailAddress}
               unsuccessfulResponse={this.state.unsuccessfulResponse}
             />
-          ) : ('')}
           </div>
         </div>
       </div>

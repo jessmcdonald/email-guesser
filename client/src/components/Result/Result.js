@@ -9,14 +9,15 @@ class Result extends Component {
   render() {
     return (
       <div className="result-container">
-        {this.props.unsuccessfulResponse ? (
+        {!!this.props.unsuccessfulResponse &&
           <h2 className="result">
-            {this.props.emailAddress}
-          </h2> ) : (
+            {this.props.unsuccessfulResponse}
+          </h2>
+        }
+        {!!this.props.emailAddress && 
             <h2 className="result">
             I guess their email is: {this.props.emailAddress}
           </h2>
-          )
         }
       </div>
 
